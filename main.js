@@ -524,7 +524,11 @@ async function fetchMoviesJSON() {
     console.log(results.title);
     const table2 = document.querySelector("#table"); 
     const tytul = document.createElement("td");
+    const link = document.createElement("a");
     tytul.textContent = results.title; 
+    link.textContent = tytul;
+    link.setAttribute("href", results.characters);
     const row2 = table2.insertRow();
     row2.appendChild(tytul);
-  })
+
+})
