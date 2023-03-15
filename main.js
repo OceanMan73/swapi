@@ -522,13 +522,16 @@ async function fetchMoviesJSON() {
 
   FILMS.results.forEach(results => { 
     console.log(results.title);
-    const table2 = document.querySelector("#table"); 
-    const tytul = document.createElement("td");
+    console.log(results.characters);
+    const ul = document.querySelector("#sampleID"); 
+    const li = document.createElement("li");
     const link = document.createElement("a");
-    tytul.textContent = results.title; 
-    link.textContent = tytul;
-    link.setAttribute("href", results.characters);
-    const row2 = table2.insertRow();
-    row2.appendChild(tytul);
-
+    ul.append(li);
+    li.append(link);
+    link.textContent = results.title;
+    const filmID = 2;
+    link.setAttribute("href", `filmDetails.html?film=${filmID}`);
+    const url = FILMS.url;
+    const Sub = url.substring(27, 29);
 })
+
