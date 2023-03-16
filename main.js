@@ -1,34 +1,25 @@
 async function fetchMoviesJSON() {
   const response = await fetch('https://swapi.dev/api/films', {
-      method: 'GET'
-      
+  method: 'GET'
   });
 
-  const movies = await response.json();
-
-  return movies;
-}
-
+  return await response.json();
+  }
+  fetchMoviesJSON().then(movies => {
+  movies.results.forEach(result => {
+  const ul = document.querySelector("#sampleID");
+  const li = document.createElement("li");
+  const link = document.createElement("a");
+  ul?.append(li);
+  li.append(link);
+  link.textContent = result.title;
+  const url = result.url;
+  const filmId = url.substring(28, 29);
+  link.setAttribute("href", `filmDetails.html?film=${filmId}`);
+  })
+  })
  
  
-document.addEventListener('DOMContentLoaded', await fetchMoviesJSON().then(movies => {
-  movies.results.forEach(results => {
-    // console.log(results.title); 
-    // console.log(results.characters);
-    
-     const ul = document.querySelector("#sampleID");
-     const li = document.createElement("li");
-     const link = document.createElement("a");
-     ul?.append(li);
-     li.append(link);
-     link.textContent = results.title;
-     const url = results.url;
-     const filmId = url.substring(28, 29);
-     // substring(od której ma zaczynac włącznie z nią, koniec ale tym razem juz tego nie wlicza) 
-    link.setAttribute("href", `filmDetails.html?film=${filmId}`);
-   })
-})
-)
 
  const FILMS =
   {
@@ -536,19 +527,3 @@ document.addEventListener('DOMContentLoaded', await fetchMoviesJSON().then(movie
       }
     ]
   }
-
-  FILMS.results.forEach(results => {
-     // console.log(results.title); 
-     // console.log(results.characters);
-     
-      const ul = document.querySelector("#sampleID");
-      const li = document.createElement("li");
-      const link = document.createElement("a");
-      ul?.append(li);
-      li.append(link);
-      link.textContent = results.title;
-      const url = results.url;
-      const filmId = url.substring(28, 29);
-      // substring(od której ma zaczynac włącznie z nią, koniec ale tym razem juz tego nie wlicza) 
-     link.setAttribute("href", `filmDetails.html?film=${filmId}`);
-    })
