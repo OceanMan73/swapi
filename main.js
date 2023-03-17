@@ -5,7 +5,8 @@ async function fetchMoviesJSON() {
 
   return await response.json();
   }
-  fetchMoviesJSON().then(movies => {
+  fetchMoviesJSON()
+  .then(movies => {
   movies.results.forEach(result => {
   const ul = document.querySelector("#sampleID");
   const li = document.createElement("li");
