@@ -3,13 +3,12 @@ const urlParams = new URLSearchParams(queryString);
 const filmID = urlParams.get('film')
 console.log(filmID);
 
-
     const film = fetch(`https://swapi.dev/api/films/${filmID}`, {
         method: 'GET'
     })
     .then(response => response.json())
     .then(data => {
-    data.characters.forEach(characters => {
+    data.characters.forEach(character => {
 
      const ul = document.querySelector("#list");
      const li = document.createElement("li");
@@ -17,7 +16,6 @@ console.log(filmID);
     
      ul?.append(li)
      li.append(btn);
-     const character = data.characters;
      btn.textContent = character;
      btn.addEventListener('click', function() {
         alert(`https://swapi.dev/api/people/${filmID}`);
@@ -29,4 +27,4 @@ console.log(filmID);
 
 
     })
-             
+          
