@@ -3,21 +3,30 @@ const urlParams = new URLSearchParams(queryString);
 const filmID = urlParams.get('film')
 console.log(filmID);
 
-const GetFilmDetail = async () => {
-     const film =  await fetch(`https://swapi.dev/api/films/${filmID}`, {
+
+    const film = fetch(`https://swapi.dev/api/films/${filmID}`, {
         method: 'GET'
     })
-     return await film.json();
-}
-    fetch(`https://swapi.dev/api/films/${filmID}`)
     .then(response => response.json())
     .then(data => {
-     const ul = document.querySelector("#sampleID");
+    data.characters.forEach(characters => {
+
+     const ul = document.querySelector("#list");
      const li = document.createElement("li");
-     const link = document.createElement("a");
-     ul?.append(li);
-     li.append(link);
-     const title = data.characters;
-     link.textContent = title;
-     document.body.appendChild(link);
-    });
+     const btn = document.createElement("button");
+    
+     ul?.append(li)
+     li.append(btn);
+     const character = data.characters;
+     btn.textContent = character;
+     btn.addEventListener('click', function() {
+        alert(`https://swapi.dev/api/people/${filmID}`);
+})
+      });
+
+
+
+
+
+    })
+             
