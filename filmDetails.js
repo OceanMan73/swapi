@@ -17,14 +17,10 @@ console.log(filmID);
      ul?.append(li)
      li.append(btn);
      btn.textContent = character;
+     const peopleID = character.substring(29,31);
      btn.addEventListener('click', function() {
-        alert(`https://swapi.dev/api/people/${filmID}`);
-})
-      });
-
-
-
-
-
+        alert(`https://swapi.dev/api/people/${peopleID}`);
+    })
+    });
     })
           
