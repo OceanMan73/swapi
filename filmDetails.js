@@ -1,21 +1,23 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const filmId = urlParams.get('film')
-console.log(filmId);
+const filmID = urlParams.get('film')
+console.log(filmID);
 
 const GetFilmDetail = async () => {
-     const film =  fetch(`https://swapi.dev/api/film/${filmId}`, {
+     const film =  await fetch(`https://swapi.dev/api/films/${filmID}`, {
         method: 'GET'
     })
-     const characters = await film.json();
-     return characters;
+     return await film.json();
 }
-    GetFilmDetail().then(characters => {
-
-    const ul = document.querySelector("#sampleID");
-    const li = document.createElement("li");
-    ul?.append(li);
-    li.textContent = characters;
-
-    })
-   
+    fetch(`https://swapi.dev/api/films/${filmID}`)
+    .then(response => response.json())
+    .then(data => {
+     const ul = document.querySelector("#sampleID");
+     const li = document.createElement("li");
+     const link = document.createElement("a");
+     ul?.append(li);
+     li.append(link);
+     const title = data.characters;
+     link.textContent = title;
+     document.body.appendChild(link);
+    });
