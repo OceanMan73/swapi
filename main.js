@@ -20,7 +20,13 @@ async function fetchMoviesJSON() {
   })
   })
  
- 
+  const searchForm = document.querySelector('#search-form');
+  const searchInput = document.querySelector('#search-input');
+  const searchResults = document.querySelector('#search-results');
+
+  const upload = searchInput.value;
+  const response = fetch(`http https://swapi.dev/api/${upload}`);
+  const data = response.json();
 
  const FILMS =
   {
