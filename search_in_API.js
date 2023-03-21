@@ -23,7 +23,8 @@ async function search(queryInput) {
         await search(queryInput.value);
       });
       
-      searchButton.addEventListener('click', async () => {
+      searchButton.addEventListener('click', async event => {
+        event.preventDefault();
         await search(queryInput.value);
       });
     }
