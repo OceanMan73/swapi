@@ -9,19 +9,13 @@ const filmID = urlParams.get('film')
     .then(film => film.json())
     .then(data => {
     data.characters.forEach(name => {
-     const people = fetch('https://swapi.dev/api/people/', {
-        method: 'GET'
-     });
-
-     console.log(people);
-
      const ul = document.querySelector("#list");
      const li = document.createElement("li");
      const btn = document.createElement("button");
     
      ul?.append(li)
      li.append(btn);
-     btn.textContent = people;                    
+     btn.textContent = name;                    
      const peopleID = name.substring(29,31);
      btn.addEventListener('click', function() {
         alert(`https://swapi.dev/api/people/${peopleID}`);
