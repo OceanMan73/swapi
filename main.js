@@ -10,7 +10,7 @@ async function fetchMoviesJSON() {
   movies.results.forEach(result => {
   const ul = document.querySelector("#sampleID");
   const li = document.createElement("li");
-  const link = document.createElement("a");
+  const link = document.createElement("a");7
   ul?.append(li);
   li.append(link);
   link.textContent = result.title;
@@ -19,14 +19,7 @@ async function fetchMoviesJSON() {
   link.setAttribute("href", `filmDetails.html?film=${filmId}`);
   })
   })
- 
-  const searchForm = document.querySelector('#search-form');
-  const searchInput = document.querySelector('#search-input');
-  const searchResults = document.querySelector('#search-results');
 
-  const upload = searchInput.value;
-  const response = fetch(`http https://swapi.dev/api/${upload}`);
-  const data = response.json();
 
  const FILMS =
   {
