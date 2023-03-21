@@ -1,26 +1,29 @@
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const filmID = urlParams.get('film')
-    console.log(filmID);
+const results = document.querySelector('#results');
 
-        const film = fetch(`https://swapi.dev/api/films/${filmID}`, {
-            method: 'GET'
-    })
-    .then(film => film.json())
-    .then(data => {
-    data.characters.forEach(name => {
-     const ul = document.querySelector("#list");
-     const li = document.createElement("li");
-     const btn = document.createElement("button");
-    
-     ul?.append(li)
-     li.append(btn);
-     btn.textContent = name;                    
-     const peopleID = name.substring(29,31);
-     btn.addEventListener('click', function() {
-        alert(`https://swapi.dev/api/people/${peopleID}`);
-        
-    });
-    });                                             
-    });
+const searchButton = document.querySelector('#searchButton');
 
+
+async function search() {
+    const queryInput = document.querySelector('#input');
+    const response = await fetch(`https://swapi.dev/api/${queryInput.value}`);
+    const data = await response.json();
+
+    results.innerHTML = '';
+
+      const ul = document.createElement('ul');
+      data.results.forEach(result => {
+        const li = document.createElement('li');
+        li.textContent = result.title;
+        ul.appendChild(li);
+      });
+      results.appendChild(ul);
+      
+        console.log(results);
+    }
+
+
+      
+      searchButton.addEventListener('click', async () => {
+
+        await search();
+      });
