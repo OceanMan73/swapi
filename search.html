@@ -5,16 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> tailwind.config = {
+      theme: {
+        extend: {
+          colors: { 
+           
+          }
+        }
+        }
+      }
+      </script>
 </head>
-<body>
+<body class="bg-gray-700">   
     
-    
+    <p class="text-yellow-300 bg-black p-10 text-center text-6xl font-bold">SWAPI</p>
     <form>
-        <input type="text" id="input" placeholder="Wpisz wyszukiwaną frazę...">
-        <button type="submit" id="searchButton">Szukaj</button>
+        <input class="text-3xl text-white bg-gray-700 w-full mx-auto text-center block items-center justify-center" type="text" id="input" placeholder="Wpisz wyszukiwaną frazę...">
+        <button class="text-white bg-gray-700 w-full mx-auto text-center block items-center justify-center" type="button" id="searchButton">Szukaj</button>
       </form>
-  
-      <div id="results"></div>
+  <br><br><br><br>
+      <div class="text-white bg-gray-700 w-full mx-auto text-center block items-center justify-center" id="results"></div>
     
 	<script src="search_in_API.js"></script>
 
